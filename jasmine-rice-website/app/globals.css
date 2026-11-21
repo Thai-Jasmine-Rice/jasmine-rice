@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: #fafafa;
+  --color-ink: #0a0a0a;
+  --color-leaf: #0a0a0a;
+  --color-grain: #a3a3a3;
+  --color-clay: #737373;
+  --color-line: #e5e5e5;
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-heading: var(--font-heading), var(--font-body), system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* แท่งกราฟ feature โตขึ้นจากเส้นศูนย์ */
+@keyframes grow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+.bar-up { transform-origin: bottom; animation: grow 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.bar-down { transform-origin: top; animation: grow 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bar-up, .bar-down { animation: none; }
+}
